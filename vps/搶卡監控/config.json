@@ -1,0 +1,27 @@
+{
+  "interval_seconds": 60,
+  "app_version": "1.6.5",
+  "filters": {
+    "regions": [],
+    "gpu_names": [],
+    "min_idle": 1,
+    "min_mem_gb": 0,
+    "max_price": 2.5,
+    "cuda": null,
+    "driver": null,
+    "require_expand": false,
+    "exclude_offline": true
+  },
+  "notify": { "only_new": true, "renotify_minutes": 30, "heartbeat_minutes": 0 },
+  "order": {
+    "enabled": false,
+    "dry_run": true,
+    "gpu_count": 1,
+    "max_price": 2.5,
+    "target_count": 1,
+    "daily_limit": 1,
+    "expand_gb": 0,
+    "image_uuid": "",
+    "template_file": "order_template.json"
+  }
+}

@@ -61,7 +61,25 @@ powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\dsh-handoff\verify.ps1
 | 插件裝完沒反應 | 外掛要重啟 DSH 才載入；`browser_*` 工具沒出現就是還沒重啟。 |
 | 家裡的 pnpm 版本太舊 | 腳本只檢查有沒有；沒有就先 `npm i -g pnpm`。 |
 
-## 四、要一起帶回家的檔案（可選）
+## 四、VPS（dsh-vps）——這台不用在家裡重裝，但要能重建
+
+VPS `149.88.70.170` 已經在跑，**回家不需要重裝它**；這包裡放的是「現況＋重建能力」：
+
+| 檔案 | 內容 |
+| --- | --- |
+| `vps/README.md` | 現況、入口、重建步驟、常用操作 |
+| `vps/VPS-運維.md` | 服務、埠、token 取得、登入頁原理、瀏覽器堆疊、重建順序 |
+| `vps/setup-vps.sh` | 在**全新 VPS** 上一次重建（Node 24 + DSH + systemd + `/login/`） |
+| `vps/部署檔/` | 實際在用的 systemd 單元、Caddy 設定、登入頁產生器、profile 設定 |
+| `vps/部署檔/02-browser-stack.sh` | 選用：Xvfb + Chrome + Playwright MCP（給 AI 用的瀏覽器） |
+| `vps/部署檔/03-grab-watch.sh` | 選用：AutoDL 搶卡監控 |
+| `vps/搶卡監控/` | 搶卡監控程式與設定 |
+
+入口永遠是 **https://dsh-149-88-70-170.sslip.io/login/**（`/` 沒有 cookie 會 401，這是正常的）。
+
+換機／加開一台時：`scp -r vps/ root@<新IP>:/root/dsh-vps` → `bash /root/dsh-vps/setup-vps.sh <網域>`，細節看 `vps/README.md`。
+
+## 五、要一起帶回家的檔案（可選）
 
 - `DSH引用助手-V2.7.zip`：https://github.com/ammo0904/dsh-quote-helper/releases/download/v2.7.0/dsh-quote-helper-V2.7.zip
 - `DSH-Browser-Control-v1.0.17.zip`：https://github.com/caob23/dsh-browser-control/releases/download/v1.0.17/DSH-Browser-Control-v1.0.17.zip

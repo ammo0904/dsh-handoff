@@ -32,7 +32,10 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\dsh-handoff\dsh-hando
 | [AGENT.md](AGENT.md) | **給 DSH AI 看的執行規格**（步驟、驗證條件、失敗處理） |
 | [install.ps1](install.ps1) | 能自動做的全部做完（檢查環境、裝插件、下載解壓兩個擴充套件） |
 | [verify.ps1](verify.ps1) | 裝完後的檢查清單 |
-| [vps/VPS-運維.md](vps/VPS-運維.md) | VPS 的啟動／重啟／登入／token／各服務位置 |
+| [vps/README.md](vps/README.md) | **DSH VPS 交接**：現況、入口、重建腳本、常用操作 |
+| [vps/setup-vps.sh](vps/setup-vps.sh) | 在新 VPS 上一次重建（Node + DSH + systemd + 登入頁） |
+| [vps/部署檔/](vps/部署檔/) | systemd 單元、Caddy 設定、登入頁產生器、profile 設定、瀏覽器堆疊與搶卡監控腳本 |
+| [vps/VPS-運維.md](vps/VPS-運維.md) | VPS 運維細節（token、登入、服務、重建順序） |
 
 ## 今天交付的兩樣東西
 

@@ -77,3 +77,23 @@ powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\dsh-handoff\verify.ps1
 - 不要用 `--load-extension` 命令列載入未封裝擴充（Chrome 155 已封鎖，會靜默失敗）
 - 不要改 `manifest.json` 的 matches 來加網址 —— 用 popup 的「啟用網址」由使用者自己加
 - 不要刪 `%USERPROFILE%\.dsh\profiles\web\package.json` 的既有依賴
+
+## 選用：VPS（dsh-vps）
+
+**只有兩種情況才做**：①使用者要換 VPS／加開一台；②VPS 掛了要重建。
+
+1. 檢查 SSH 是否可用：`ssh -i ~/.ssh/id_ed25519_vps root@149.88.70.170 'systemctl is-active dsh-web'`
+   - 不通 → 問使用者金鑰位置，或跳過此段（本機安裝不受影響）
+2. 只是「重啟／看狀態／取 token」→ 直接 SSH 執行，**不要重建**：
+   - `systemctl restart dsh-web`（token 會換，之後入口仍用 `/login/`）
+   - `grep -o 'token=[A-Za-z0-9_-]*' /var/log/dsh-web.log | tail -1`
+3. 真的要重建（新機器）：
+   ```bash
+   scp -i ~/.ssh/id_ed25519_vps -r vps/ root@<新IP>:/root/dsh-vps
+   ssh -i ~/.ssh/id_ed25519_vps root@<新IP> 'bash /root/dsh-vps/setup-vps.sh <網域> 3080 /srv/DSH_Workspace'
+   ```
+   驗證：`curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3080/` 應為 **401**（沒有 cookie 才是對的），
+   並且 `systemctl is-active dsh-web xvfb chrome` 三個都 active。
+4. Caddy：VPS 上的 Caddy 在容器（`/root/caddy-8090/Caddyfile`），`setup-vps.sh` 只會**印出**要貼的片段，
+   貼進去後 `docker restart <caddy容器>` 或 `caddy reload`。**不要**在 host 再開第二個 caddy（443 衝突）。
+5. 瀏覽器堆疊與搶卡監控是選用的：`bash vps/部署檔/02-browser-stack.sh`、`bash vps/部署檔/03-grab-watch.sh`。

@@ -1,0 +1,135 @@
+# VPS profile patch layer (mirrors the Windows profile, minus local-only plugins)
+- id: ui-settings-general
+  name: "@deepseek-ai/dsh-client-ui-settings-general"
+  config:
+    welcomeNoticeVersion: 2026-09-28.1
+- id: llm-pi-ai
+  name: "@deepseek-ai/dsh-llm-pi-ai"
+  config:
+    providers:
+      api-openai:
+        apiKeyEnv: API_OPENAI_API_KEY
+        api: openai-completions
+        baseURL: https://cn.meta-api.vip/v1
+        models:
+          - id: gpt-6-luna
+            name: gpt-6-luna
+      api-grok:
+        apiKeyEnv: API_GROK_API_KEY
+        api: openai-completions
+        baseURL: https://cn.meta-api.vip/v1
+        models:
+          - id: grok-4.7
+            name: grok-4.7
+      api-gemini:
+        apiKeyEnv: API_GEMINI_API_KEY
+        api: openai-completions
+        baseURL: https://cn.meta-api.vip/v1
+        models:
+          - id: gemini-3.7-flash
+            name: gemini-3.7-flash
+      api-deepseek-flash:
+        apiKeyEnv: API_DEEPSEEK_FLASH_API_KEY
+        api: openai-completions
+        baseURL: https://cn.meta-api.vip/v1
+        models:
+          - id: deepseek-v4-flash
+            name: deepseek-v4-flash
+      api-deepseek-pro:
+        apiKeyEnv: API_DEEPSEEK_PRO_API_KEY
+        api: openai-completions
+        baseURL: https://cn.meta-api.vip/v1
+        models:
+          - id: deepseek-v4-pro
+            name: deepseek-v4-pro
+      api-dabai-grok:
+        displayName: 大白-grok
+        apiKeyEnv: API_DABAI_GROK_API_KEY
+        api: openai-completions
+        baseURL: https://ai1.dbcc.cc.cd/v1
+        models:
+          - id: grok-4.7
+            name: 大白-grok：grok-4.7
+      api-dabai-01:
+        displayName: gpt-pro-不降智
+        apiKeyEnv: API_DABAI_01_API_KEY
+        api: openai-completions
+        baseURL: https://ai1.dbcc.cc.cd/v1
+        models:
+          - id: gpt-6-sol
+            name: gpt-pro-不降智：gpt-6-sol
+          - id: gpt-6-astra
+            name: gpt-pro-不降智：gpt-6-astra
+          - id: gpt-6.1-sol
+            name: gpt-pro-不降智：gpt-6.1-sol
+      api-dabai-02:
+        displayName: gpt官key
+        apiKeyEnv: API_DABAI_02_API_KEY
+        api: openai-completions
+        baseURL: https://ai1.dbcc.cc.cd/v1
+        models:
+          - id: gpt-6-astra
+            name: gpt官key：gpt-6-astra
+          - id: gpt-6-sol
+            name: gpt官key：gpt-6-sol
+          - id: gpt-6.1-sol
+            name: gpt官key：gpt-6.1-sol
+      api-guomx:
+        displayName: 大白-國模
+        apiKeyEnv: API_GUOMX_API_KEY
+        api: openai-completions
+        baseURL: https://ai1.dbcc.cc.cd/v1
+        models:
+          - id: deepseek-v4.1-flash
+            name: 大白-國模：deepseek-v4.1-flash
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-official
+    model: deepseek-flash
+    reasoningEffort: high
+- id: ui-theme
+  name: "@deepseek-ai/dsh-client-ui-theme"
+  config:
+    preference: dark
+- id: meow-memory
+  name: 'meow-memory'
+  config:
+    promptLang: 'zh'
+- id: permission
+  name: "@deepseek-ai/dsh-permission-presets"
+  config:
+    presets:
+      read-only:
+        sandbox: read-only
+        approval: ask
+      workspace-write:
+        sandbox: workspace-write
+        approval: ask
+      danger-full-access:
+        sandbox: danger-full-access
+        approval: never
+    defaultPreset: danger-full-access
+- id: ui-conversation
+  name: "@deepseek-ai/dsh-client-ui-conversation"
+  config:
+    busyEnter: steer
+- id: llm-deepseek
+  name: "@deepseek-ai/dsh-llm-deepseek-api-key"
+  config:
+    models:
+      - id: deepseek-flash
+        name: deepseek-flash
+        contextWindow: 1000000
+        inputModalities:
+          - text
+          - image
+        systemPromptUpdate: in-history
+        toolUpdate: addition-only
+      - id: deepseek-v4-pro
+        name: deepseek-v4-pro
+        description: Stronger agentic coding, knowledge, and difficult reasoning; suited
+          to complex or quality-critical tasks at higher cost.
+        contextWindow: 1000000
+        inputModalities:
+          - text

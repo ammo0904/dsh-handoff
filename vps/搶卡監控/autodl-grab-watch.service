@@ -1,0 +1,17 @@
+[Unit]
+Description=AutoDL grab watcher (poll machine list, notify, optional dry-run order)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/monitor2
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/usr/bin/python3 /root/monitor2/watch_machines.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/root/monitor2/service.log
+StandardError=append:/root/monitor2/service.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+{
+  "name": "dsh-profile-web",
+  "private": true,
+  "dependencies": {
+    "@dingyi222666/dsh-session-notification": "^0.2.0",
+    "dsh-better-sidebar": "^0.24.1",
+    "dsh-cost-meter": "1.8.26",
+    "dshmarket": "^1.66.6",
+    "meow-memory": "0.29.0"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@dingyi222666/dsh-session-notification",
+        "dshmarket",
+        "dsh-better-sidebar",
+        "meow-memory",
+        "dsh-cost-meter"
+      ]
+    }
+  }
+}
