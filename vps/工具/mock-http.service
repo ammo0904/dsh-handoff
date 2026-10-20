@@ -1,0 +1,13 @@
+[Unit]
+Description=Mock HTTP server for AutoDL extension dev (127.0.0.1:8099)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/ext/AutoDL主機監控-V1
+ExecStart=/usr/bin/python3 -m http.server 8099 --bind 127.0.0.1
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
