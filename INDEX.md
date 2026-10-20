@@ -15,7 +15,8 @@
 | --- | --- | --- |
 | [dsh-handoff](https://github.com/ammo0904/dsh-handoff) | 交接包：安裝腳本、AGENT/HANDOFF、VPS 交接與重建腳本 | main `78b02f0` 之後 |
 | [dsh-quote-helper](https://github.com/ammo0904/dsh-quote-helper) | **DSH 引用助手**擴充套件原始碼＋測試工具＋V1 舊版 | Release **v2.7.0** |
-| [autodl-monitor](https://github.com/ammo0904/autodl-monitor) | **AutoDL 主機 GPU 監控**擴充套件原始碼 | main |
+| [autodl-monitor](https://github.com/ammo0904/autodl-monitor) | **AutoDL 主機 GPU 監控**擴充套件原始碼（V1） | main |
+| `ammo0904/autodl-gpu-monitor`（**private**） | **AutoDL 主機監控 V2**（全量抓取、動態篩選、20 秒掃描、dry-run 建立） | main `491b828` |
 | [dsh-conversation-sync](https://github.com/ammo0904/dsh-conversation-sync) | DSH 跨裝置對話同步插件（較早的專案） | v0.5.2 |
 
 ## 三、Release 資產（安裝包）
