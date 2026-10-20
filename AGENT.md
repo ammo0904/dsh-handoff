@@ -77,6 +77,7 @@ powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\dsh-handoff\verify.ps1
 - 不要用 `--load-extension` 命令列載入未封裝擴充（Chrome 155 已封鎖，會靜默失敗）
 - 不要改 `manifest.json` 的 matches 來加網址 —— 用 popup 的「啟用網址」由使用者自己加
 - 不要刪 `%USERPROFILE%\.dsh\profiles\web\package.json` 的既有依賴
+- **不要 fork／重新打包 `dsh-browser-control`**：它是 AGPL-3.0，直接從 npm 與作者 Release 安裝即可（版本固定 v1.0.17），把它的程式碼併進本專案會違反授權
 
 ## 選用：VPS（dsh-vps）
 

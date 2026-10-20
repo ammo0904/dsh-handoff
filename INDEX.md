@@ -26,6 +26,9 @@
 | `DSH-Browser-Control-v1.0.17.zip` | https://github.com/caob23/dsh-browser-control/releases/download/v1.0.17/DSH-Browser-Control-v1.0.17.zip（第三方） |
 | AutoDL 監控擴充 | 目前沒有上 Release，直接 clone `autodl-monitor` 用「載入未解壓縮的擴展」 |
 
+> **第三方政策**：`dsh-browser-control` **直接拉作者**（npm `@caob23/dsh-browser-control` v1.0.17 ＋ 作者 Release 的 zip），**不 fork、不建庫**。
+> 授權是 **AGPL-3.0**，所以不要把它的程式碼併進我們的 repo。細節見 `HANDOFF.md` 第六節。
+
 ## 四、VPS（dsh-vps）
 
 全部在 `vps/`：

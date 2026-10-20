@@ -85,3 +85,40 @@ VPS `149.88.70.170` 已經在跑，**回家不需要重裝它**；這包裡放�
 - `DSH-Browser-Control-v1.0.17.zip`：https://github.com/caob23/dsh-browser-control/releases/download/v1.0.17/DSH-Browser-Control-v1.0.17.zip
 
 （install.ps1 會自動下載，通常不用手動帶。）
+
+## 六、第三方依賴政策：browser-control 直接拉作者，不建庫
+
+**結論：不 fork、不另建 repo、不重打包。** 我們只固定「來源＋版本」，讓安裝脚本去作者那裡拿。
+
+| 項目 | 值 |
+| --- | --- |
+| 插件（npm） | `@caob23/dsh-browser-control`，目前 **v1.0.17** |
+| 擴充套件（zip） | `https://github.com/caob23/dsh-browser-control/releases/download/v1.0.17/DSH-Browser-Control-v1.0.17.zip` |
+| 上游 | https://github.com/caob23/dsh-browser-control |
+| 授權 | **AGPL-3.0**（copyleft） |
+
+### 為什麼不建庫
+
+1. **授權是 AGPL-3.0**：可以安裝、可以當依賴呼叫；但**不要**把它的原始碼併進我們的專案、也不要改一改當成我們的專案發布（AGPL 連「提供網路服務」都要求提供原始碼）。
+2. 少一份要維護的東西：作者更新時我們只要改版本號，不必同步 patch。
+3. 授權與出處本來就該留在作者那裡，這樣責任歸屬清楚。
+
+### 升級流程（作者出新版時）
+
+1. 開 https://github.com/caob23/dsh-browser-control/releases 看新版本與 release notes（特別看權限有沒有變）
+2. 改 `install.ps1` 的兩處：`$BrowserExtUrl` 的版本號、以及 `$PluginName` 後的 npm 版本（或直接 `dsh plugin --profile web add @caob23/dsh-browser-control@<新版>`）
+3. 重跑 `install.ps1` → 在瀏覽器擴充頁對 Browser Control 按「重新載入」→ 重啟 DSH
+4. 驗證：`browser_info` 回的 `version` 應等於新版
+
+### 若真要鏡像（備援）
+
+只有「作者刪掉 Release、安裝會失敗」時才考慮。鏡像時必須：
+- 附上作者的 `LICENSE`（AGPL-3.0）與出處連結
+- 不要修改內容、不要改套件名
+- 註明「原封不動的備份」
+
+### 權限風險（給未來的自己）
+
+這個擴充有 `debugger` 權限 → **等於能完全操控你的瀏覽器**（含所有已登入的網站）。
+- 只在高信任來源安裝；升級前看 release notes 有沒有多要權限
+- 不用時可以在擴充頁把它關掉（DSH 的 `browser_*` 工具會失效，其他功能不受影響）
