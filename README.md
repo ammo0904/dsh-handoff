@@ -11,6 +11,15 @@ git clone https://github.com/ammo0904/dsh-handoff.git $env:USERPROFILE\dsh-hando
 powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\dsh-handoff\install.ps1
 ```
 
+**沒有 git 的話**（改用 zip 下載）：
+
+```powershell
+$zip = "$env:TEMP\dsh-handoff.zip"
+Invoke-WebRequest -UseBasicParsing "https://github.com/ammo0904/dsh-handoff/archive/refs/heads/main.zip" -OutFile $zip
+Expand-Archive $zip -DestinationPath "$env:USERPROFILE\dsh-handoff" -Force
+powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\dsh-handoff\dsh-handoff-main\install.ps1"
+```
+
 或者直接對家裡的 DSH 說：
 
 > 讀 `https://github.com/ammo0904/dsh-handoff` 的 `HANDOFF.md`，照著裝。
