@@ -1,0 +1,15 @@
+* text=auto
+
+# Linux 端執行的檔案一定要 LF（CRLF 會讓 bash 讀到 \r 而爆掉）
+*.sh      text eol=lf
+*.service text eol=lf
+*.tpl     text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.json    text eol=lf
+*.md      text eol=lf
+
+# Windows 端執行的腳本用 CRLF
+*.ps1     text eol=crlf
+*.bat     text eol=crlf
+*.cmd     text eol=crlf
