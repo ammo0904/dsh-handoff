@@ -50,6 +50,8 @@ bash /root/dsh-vps/setup-vps.sh <你的網域> 3080 /srv/DSH_Workspace
 
 | 項目 | 值 |
 | --- | --- |
+| 規格 | **8 核 / 16 GB**（2026-10-20 由 4H8G 升級，關機→開機後生效） |
+| 系統磁碟 | 機器上 70 GiB（控制台顯示 90G 尚未反映到 `/dev/vda`） |
 | DSH | 0.2.1-rc.2（`@latest`，會自己更新） |
 | 服務 | `dsh-web`（3080）、`xvfb`（:99）、`chrome`（9222）、Caddy（443） |
 | 工作目錄 | `/srv/DSH_Workspace` |
